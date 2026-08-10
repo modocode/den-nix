@@ -8,14 +8,9 @@
     {...}:
 
     {
-      services.displayManager.lemurs = {
+      services.displayManager.sddm = {
         enable = true;
-        settings = {
-          do_log = true;
-          tty = 1;
-          clear_tty = true;
-          blank_time = 300;
-        };
+        wayland.enable = true;
       };
 
       programs.niri = {
