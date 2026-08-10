@@ -8,9 +8,14 @@
     {...}:
 
     {
-      services.displayManager.sddm = {
+      services.displayManager.lemurs = {
         enable = true;
-        wayland.enable = true;
+        settings = {
+          do_log = true;
+          tty = 1;
+          clear_tty = true;
+          blank_time = 300;
+        };
       };
 
       programs.niri = {
@@ -22,12 +27,18 @@
 
     });
 
-  perSystem = {pkgs, lib,  ...}:{
+  perSystem = {pkgs, lib, self', ...}:{
 
     packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       
       settings = {
+        spawn-at-startup = [
+          (lib.getExe self'.packages.myNoctalia)
+        ];
+
+
+        
         xwayland-satellite = {
           path = lib.getExe pkgs.xwayland-satellite;
         };
@@ -37,8 +48,8 @@
           "Mod+Return".spawn-sh = lib.getExe pkgs.alacritty;
 
 
-
-
+          "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+    
 
           # Window management
           "Mod+Q".close-window = { };
