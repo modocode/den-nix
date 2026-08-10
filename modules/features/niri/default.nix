@@ -97,6 +97,11 @@
           "Mod+Shift+0".move-column-to-workspace = "w9";
 
 
+          "Mod+U".focus-workspace-down = { };
+          "Mod+I".focus-workspace-up = { };
+          "Mod+Shift+U".move-window-to-workspace-down = { };
+          "Mod+Shift+I".move-window-to-workspace-up = { };
+
           #volume
           "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
           "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-";
