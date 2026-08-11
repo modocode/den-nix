@@ -32,7 +32,12 @@
           (lib.getExe self'.packages.myNoctalia)
         ];
 
-
+        switch-events.lid-close.spawn = [
+          "noctalia"
+          "msg"
+          "session"
+          "lock-and-suspend"
+        ];
         
         xwayland-satellite = {
           path = lib.getExe pkgs.xwayland-satellite;
@@ -56,16 +61,16 @@
 
           
           # workspace
-          "Mod+1".focus-workspace = "w0";
-          "Mod+2".focus-workspace = "w1";
-          "Mod+3".focus-workspace = "w2";
-          "Mod+4".focus-workspace = "w3";
-          "Mod+5".focus-workspace = "w4";
-          "Mod+6".focus-workspace = "w5";
-          "Mod+7".focus-workspace = "w6";
-          "Mod+8".focus-workspace = "w7";
-          "Mod+9".focus-workspace = "w8";
-          "Mod+0".focus-workspace = "w9";
+          "Mod+1".focus-workspace = "0";
+          "Mod+2".focus-workspace = "1";
+          "Mod+3".focus-workspace = "2";
+          "Mod+4".focus-workspace = "3";
+          "Mod+5".focus-workspace = "4";
+          "Mod+6".focus-workspace = "5";
+          "Mod+7".focus-workspace = "6";
+          "Mod+8".focus-workspace = "7";
+          "Mod+9".focus-workspace = "8";
+          "Mod+0".focus-workspace = "9";
 
           # move column 
           "Mod+Shift+H".move-column-left = { };
@@ -131,7 +136,7 @@
         };
 
         layout = {
-          gaps = 5;
+          gaps = 10;
           focus-ring = {
             width = 3;
             active-color = "#f5c2e7";

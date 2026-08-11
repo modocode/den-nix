@@ -11,6 +11,7 @@
         printing
         user
         locale
+        battery
       ];
     in {
       imports =
