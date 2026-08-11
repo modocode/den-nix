@@ -47,6 +47,8 @@
         binds = {
           "Mod+Return".spawn-sh = lib.getExe pkgs.alacritty;
 
+          "Mod+D".spawn-sh =
+                lib.getExe self'.packages.myFuzzel;
 
           "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
     

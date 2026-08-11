@@ -3,7 +3,7 @@
 
       packages.myNoctalia =
     let
-      noctaliaLocation = "home/monad/.config/noctalia";
+      noctaliaLocation = "/home/monad/.config/noctalia";
     in 
       inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
         inherit pkgs;

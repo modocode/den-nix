@@ -12,6 +12,7 @@
         user
         locale
         battery
+        home-manager
       ];
     in {
       imports =
