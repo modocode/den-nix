@@ -27,6 +27,16 @@
 
 
   };
+  flake.homeModules.user =
+    { ... }:
+    {
+      home = {
+        username = "monad";
+        homeDirectory = "/home/monad";
+        stateVersion = "23.05";
+      };
 
+      programs.home-manager.enable = true;
+    };
 
 }
