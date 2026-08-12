@@ -28,6 +28,7 @@
            inputs.flake-parts.flakeModules.modules
            # inputs.flake-parts.homeModules.modules
            inputs.flake-file.flakeModules.default
+           inputs.home-manager.flakeModules.home-manager
    
             (inputs.import-tree ./modules) # keep this commented for now
          ];
