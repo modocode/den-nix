@@ -23,7 +23,9 @@
     packages.emacs = inputs.wrapper-modules.wrappers.emacs.wrap {
       inherit pkgs;
       package = pkgs.emacs-pgtk;
-      emacsPackages = epkgs: with epkgs.melpaPackages; [vterm];
+      emacsPackages = epkgs:  [
+        epkgs.vterm
+      ];
 
   };
 

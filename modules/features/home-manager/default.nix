@@ -13,7 +13,7 @@
       backupFileExtension = "hm-backup";
       users.monad = {
         imports = [
-          self.homeModules.default
+          self.homeModules.user
         ];
       };
     };

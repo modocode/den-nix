@@ -23,6 +23,7 @@
       # good
       desktop
       dev
+      office
 
 
 
