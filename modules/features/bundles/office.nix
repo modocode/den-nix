@@ -5,7 +5,9 @@
   flake.nixosModules.office = moduleWithSystem({pkgs, ...}:
     {
       imports = [
-        self.nixosModules.libreoffice
+        self.nixosModules.office-pdf
+        self.nixosModules.office-documents
+        # self.nixosModules.references
 
       ];
 
