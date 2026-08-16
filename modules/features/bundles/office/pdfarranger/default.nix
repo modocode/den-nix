@@ -4,7 +4,7 @@
   flake.nixosModules.pdfarranger =
     { pkgs, ... }:
     {
-      enviornment.systemPackages  = [
+      environment.systemPackages  = [
         pkgs.pdfarranger
       ];
     };

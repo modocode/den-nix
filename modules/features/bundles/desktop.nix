@@ -4,19 +4,17 @@
 
   flake.nixosModules.desktop = moduleWithSystem({pkgs, ...}:
 
-    let
-      modules = with self.nixosModules; [
-        core
+    {
+    imports = [
+        self.nixosModules.core
         #kde-plasma
-        network
-        niri
-        zen-browser
-        fonts
+        self.nixosModules.network
+        self.nixosModules.niri
+        self.nixosModules.zen-browser
+        self.nixosModules.fonts
+    ];
 
         
-      ];
-    in {
-      imports = modules;
       environment.systemPackages = [
         #pkgs.kdePackages.spectacle
       ];

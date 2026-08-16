@@ -3,14 +3,13 @@
 {
 
   flake.nixosModules.dev = moduleWithSystem({pkgs, ...}:
-
-    let
-      modules = with self.nixosModules; [
+    {
+    imports = [
         # Add Modules
-        emacs
-        git
-        nh
-        zsh
+        self.nixosModules.emacs
+        self.nixosModules.git
+        self.nixosModules.nh
+        self.nixosModules.zsh
 
         /*
           to add as needed
@@ -23,10 +22,15 @@
 
 
         */
+    ];
+
+      home-manager.sharedModules = [
+
 
       ];
-    in {
-      imports = modules;
+
+
+      
       environment.systemPackages = with pkgs; [
         wget
         ripgrep

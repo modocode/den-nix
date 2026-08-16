@@ -4,7 +4,7 @@
   flake.nixosModules.zathura =
     { pkgs, ... }:
     {
-      enviornment.systemPackages  = [
+      environment.systemPackages  = [
         pkgs.zathura
       ];
     };
