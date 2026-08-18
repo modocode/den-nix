@@ -12,11 +12,14 @@
         self.nixosModules.niri
         self.nixosModules.zen-browser
         self.nixosModules.fonts
+       # self.nixosModules.kde-plasma
     ];
+    
 
         
       environment.systemPackages = [
         #pkgs.kdePackages.spectacle
+        pkgs.peazip
       ];
 
     });

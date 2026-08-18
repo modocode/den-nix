@@ -5,10 +5,9 @@
       upower = {
         enable = true;
         usePercentageForPolicy = true;
-        percentageLow = 40;
-        percentageCritical = 30;
-        percentageAction = 20;
-        criticalPowerAction = "PowerOff";
+        percentageLow = 30;
+        percentageCritical = 20;
+        percentageAction = 5;
       };
       thermald.enable = true;
       power-profiles-daemon.enable = true;

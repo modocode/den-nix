@@ -22,6 +22,7 @@
       kdePackages.filelight
       kdePackages.kdenlive
       kdePackages.yakuake
+			ghostty
     ];
   };
 

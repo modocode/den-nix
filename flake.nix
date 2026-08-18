@@ -11,7 +11,8 @@
           flake-parts.url = "github:hercules-ci/flake-parts";
           
           systems.url = "github:nix-systems/default";
-          
+          devshell.url = "github:numtide/devshell";
+
           flake-file.url = "github:vic/flake-file";
           
           wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
@@ -29,8 +30,10 @@
            # inputs.flake-parts.homeModules.modules
            inputs.flake-file.flakeModules.default
            inputs.home-manager.flakeModules.home-manager
-   
-            (inputs.import-tree ./modules) # keep this commented for now
+           inputs.devshell.flakeModule   
+           (inputs.import-tree ./modules) # keep this commented for now
+           
+
          ];
 
 
@@ -38,10 +41,23 @@
          systems = import inputs.systems;
          
          # Dev shell for editing this config 
-         perSystem = { pkgs, ... }: {
-           devShells.default = pkgs.mkShell {
-             packages = with pkgs; [
+         perSystem = {config, pkgs, ... }: {
+
+           devshells.default =  {
+
+
+             commands = [
+               {
+                 name = "hello";
+                 command = "echo hello";
+                 
+               }
+
+             ];
+
+             devshell.packages = with pkgs; [
                nixd                  # language server — go-to-def, completions, diagnostics
+
                
                nixfmt-rfc-style      # official RFC 166 formatter (replaces nixpkgs-fmt)
                statix                # lints anti-patterns: with pkgs, rec, etc.
@@ -55,8 +71,8 @@
                git                   # flake inputs are git-tracked; nix needs it
                jq                    # handy for picking apart nix eval --json output
              ];
-
            };
+           
          };
 
        };

@@ -10,6 +10,9 @@
         self.nixosModules.git
         self.nixosModules.nh
         self.nixosModules.zsh
+        self.nixosModules.scientific
+        self.nixosModules.eda
+        self.nixosModules.fpga
 
         /*
           to add as needed

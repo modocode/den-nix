@@ -41,7 +41,10 @@
 
 
       #};
-      
+
+      environment.systemPackages = with pkgs; [
+        wifitui
+      ];
     
 
 

@@ -22,6 +22,7 @@
   perSystem = {pkgs,  ...}:{
     packages.emacs = inputs.wrapper-modules.wrappers.emacs.wrap {
       inherit pkgs;
+      runtimePkgs = [pkgs.hledger];
       package = pkgs.emacs-pgtk;
       emacsPackages = epkgs:  [
         epkgs.vterm
