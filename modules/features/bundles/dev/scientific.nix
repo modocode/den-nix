@@ -6,7 +6,7 @@
 
     {
       environment.systemPackages = [
-        pkgs.mxmaxima
+        pkgs.wxmaxima
         pkgs.octave
         pkgs.gnuplot
       ];

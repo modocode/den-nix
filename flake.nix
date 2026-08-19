@@ -1,10 +1,6 @@
 {
         inputs = {
           nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-          home-manager = {
-            url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-          };
     
           import-tree.url = "github:vic/import-tree";
           
@@ -15,12 +11,7 @@
 
           flake-file.url = "github:vic/flake-file";
           
-          wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
           
-          zen-browser = {
-            url = "github:youwen5/zen-browser-flake";
-            inputs.nixpkgs.follows = "nixpkgs";
-          };
 
         };
     
@@ -28,7 +19,7 @@
          imports = [
            inputs.flake-parts.flakeModules.modules
            # inputs.flake-parts.homeModules.modules
-           inputs.flake-file.flakeModules.default
+           inputs.flake-file.flakeModules.dendritic
            inputs.home-manager.flakeModules.home-manager
            inputs.devshell.flakeModule   
            (inputs.import-tree ./modules) # keep this commented for now

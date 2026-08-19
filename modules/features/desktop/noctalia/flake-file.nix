@@ -1,3 +1,5 @@
+{inputs, ...}:
+
 {
   flake-file.inputs = {
     noctalia = {
