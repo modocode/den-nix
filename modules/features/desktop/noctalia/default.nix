@@ -1,19 +1,19 @@
 { self, inputs, ... }: {
-  perSystem = { pkgs, ... }: {
+  perSystem = { pkgs, lib, ... }: {
 
-      packages.myNoctalia =
-    let
-      noctaliaLocation = "/home/monad/.config/noctalia";
-    in 
-      inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-        inherit pkgs;
-        
-        outOfStoreConfig = noctaliaLocation;
+    packages.myNoctalia = pkgs.writeShellApplication {
+      name = "noctalia";
 
-        autoCopyConfig = true;
-        settings =
-          (builtins.fromJSON
-            (builtins.readFile ./noctalia.json)).settings;
-      };
+      runtimeInputs = [
+        pkgs.noctalia
+      ];
+
+      text = ''
+        export NOCTALIA_CONFIG_DIR="$HOME/den-nix/modules/features/desktop/noctalia"
+        exec ${lib.getExe pkgs.noctalia} "$@"
+      '';
+    };
+
   };
+
 }

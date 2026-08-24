@@ -32,6 +32,39 @@
           (lib.getExe self'.packages.myNoctalia)
         ];
 
+        window-rules = [
+          {
+            geometry-corner-radius = 12;
+            clip-to-geometry = true;
+            draw-border-with-background = true;
+          }
+
+        ];
+
+        input = {
+          keyboard = {
+            repeat-rate = 50;
+            repeat-delay = 250;
+            xkb.layout = "us";
+          };
+
+          touchpad = {
+            tap = { };
+            natural-scroll = { };
+            accel-profile = "flat";
+            scroll-factor = 1.0;
+
+          };
+
+          mouse = {
+            accel-profile = "flat";
+            scroll-factor = 1.0;
+          };
+
+
+        };
+
+          
         switch-events.lid-close.spawn = [
           "noctalia"
           "msg"
@@ -45,38 +78,33 @@
 
         
         binds = {
-          "Mod+Return".spawn-sh = lib.getExe pkgs.alacritty;
+          "Mod+Return".spawn-sh = lib.getExe pkgs.ghostty;
 
           "Mod+D".spawn-sh =
                 lib.getExe self'.packages.myFuzzel;
 
           "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+          
+          "Mod+Shift+D".spawn-sh =
+            "fd --type f | ${lib.getExe self'.packages.myFuzzel} --dmenu | xargs -r xdg-open";
+
+          
+            
     
 
           # Window management
           "Mod+Q".close-window = { };
           "Mod+F".maximize-column = { };
           "Mod+G".fullscreen-window = { };
-          "Mod+Shift+F".toggle-window-floating = { };
+          "Mod+Space".toggle-window-floating = { };
+          "Mod+Shift+Space".switch-focus-between-floating-and-tiling = {};
           "Mod+C".center-column = { };
+          "Mod+Tab".toggle-overview = { };
 
-
-          
-          # workspace
-          "Mod+1".focus-workspace = "0";
-          "Mod+2".focus-workspace = "1";
-          "Mod+3".focus-workspace = "2";
-          "Mod+4".focus-workspace = "3";
-          "Mod+5".focus-workspace = "4";
-          "Mod+6".focus-workspace = "5";
-          "Mod+7".focus-workspace = "6";
-          "Mod+8".focus-workspace = "7";
-          "Mod+9".focus-workspace = "8";
-          "Mod+0".focus-workspace = "9";
 
           # move column 
-          "Mod+Shift+H".move-column-left = { };
-          "Mod+Shift+L".move-column-right = { };
+          "Mod+Shift+H".consume-or-expel-window-left = {};
+          "Mod+Shift+L".consume-or-expel-window-right = {};
           "Mod+Shift+K".move-window-up = { };
           "Mod+Shift+J".move-window-down = { };
 
@@ -90,20 +118,6 @@
           "Mod+J".focus-window-down = { };
 
 
-          # move to workspace
-
-          "Mod+Shift+1".move-column-to-workspace = "w0";
-          "Mod+Shift+2".move-column-to-workspace = "w1";
-          "Mod+Shift+3".move-column-to-workspace = "w2";
-          "Mod+Shift+4".move-column-to-workspace = "w3";
-          "Mod+Shift+5".move-column-to-workspace = "w4";
-          "Mod+Shift+6".move-column-to-workspace = "w5";
-          "Mod+Shift+7".move-column-to-workspace = "w6";
-          "Mod+Shift+8".move-column-to-workspace = "w7";
-          "Mod+Shift+9".move-column-to-workspace = "w8";
-          "Mod+Shift+0".move-column-to-workspace = "w9";
-
-
           "Mod+U".focus-workspace-down = { };
           "Mod+I".focus-workspace-up = { };
           "Mod+Shift+U".move-window-to-workspace-down = { };
@@ -112,6 +126,11 @@
           #volume
           "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
           "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-";
+          "XF86AudioMute".spawn-sh = "noctalia msg volume-mute";
+
+          # Brightness
+          "XF86MonBrightnessUp".spawn-sh = "${lib.getExe pkgs.brightnessctl} set +10%";
+          "XF86MonBrightnessDown".spawn-sh = "${lib.getExe pkgs.brightnessctl} set 10%-";
 
           # column with
           "Mod+Ctrl+H".set-column-width = "-5%";

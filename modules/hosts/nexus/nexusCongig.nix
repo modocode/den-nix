@@ -12,10 +12,15 @@
     environment.systemPackages = with pkgs; [
       tor-browser
       tor
-      rclone
     ];
 
 
+    services.org-sync = {
+      enable = true;
+      localPath = "/home/monad/org";
+      remote = "myDropBox3.1:org";
+      interval = "5m";
+    };
   };
 
 

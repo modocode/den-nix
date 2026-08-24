@@ -8,7 +8,7 @@
       inherit pkgs;
       settings = {
             main = {
-              terminal = "${pkgs.alacritty}/bin/alacritty";
+              terminal = "${pkgs.ghostty}/bin/ghostty";
               width = 40;
               lines = 15;
               horizontal-pad = 20;

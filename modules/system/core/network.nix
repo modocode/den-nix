@@ -11,7 +11,13 @@
 
 
     {
-      networking.networkmanager.enable = true;
+      networking.networkmanager = {
+        enable = true;
+
+        wifi.powersave = true;
+
+      };
+
       security.sudo.enable = true;
 
       # networking.wg-quick.interfaces = {

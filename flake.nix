@@ -11,15 +11,32 @@
 
           flake-file.url = "github:vic/flake-file";
           
+          home-manager = {
+            url = "github:nix-community/home-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+          };
+
+          wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+
+          zen-browser = {
+            url = "github:youwen5/zen-browser-flake";
+            inputs.nixpkgs.follows = "nixpkgs";
+          };
           
+          noctalia = {
+            url = "github:noctalia-dev/noctalia-shell";
+            inputs.nixpkgs.follows = "nixpkgs";
+          };
+
+
 
         };
     
-       outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+        outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
          imports = [
            inputs.flake-parts.flakeModules.modules
            # inputs.flake-parts.homeModules.modules
-           inputs.flake-file.flakeModules.dendritic
+           inputs.flake-file.flakeModules.default
            inputs.home-manager.flakeModules.home-manager
            inputs.devshell.flakeModule   
            (inputs.import-tree ./modules) # keep this commented for now
