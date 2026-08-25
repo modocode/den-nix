@@ -64,8 +64,9 @@
               cat = lib.getExe pkgs.bat;
               htop = lib.getExe pkgs.bottom;
               fd = "${lib.getExe pkgs.fd} -Lu";
-              ns = "${lib.getExe self'.packages.nh} os switch . -H nexus";
-              cd = "zoxide";
+              ns = "${lib.getExe self'.packages.nh} os switch . -H";
+              nt = "${lib.getExe self'.packages.nh} os test . -H";
+              cd = "z";
               nc = "${lib.getExe self'.packages.nh} clean all";
 
             };
