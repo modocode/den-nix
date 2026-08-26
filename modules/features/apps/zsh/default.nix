@@ -22,6 +22,9 @@
     programs.zsh = {
       enable = true;
       enableCompletion = true;
+      plugins = import ./plugins.nix {
+        inherit pkgs;
+      };        
       syntaxHighlighting.highlighters = [
           "main"
           "brackets"
@@ -44,9 +47,6 @@
       ohMyZsh = {
         enable = true;
         theme = "agnoster";
-        plugins = [
-          "${pkgs.zsh-fzf-tab}"
-        ];
 
 
       };

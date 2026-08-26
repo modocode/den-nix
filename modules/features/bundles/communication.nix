@@ -9,11 +9,11 @@
 
       ];
       
-      environment.systemPackages = with pkgs; [
-        karere
-        64gram
+      environment.systemPackages = [
+        pkgs.karere
+        pkgs._64gram
     
 
-      ]
+      ];
     };
 }

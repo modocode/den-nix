@@ -19,7 +19,7 @@
       enable = true;
       localPath = "/home/monad/org";
       remote = "myDropBox3.1:org";
-      interval = "5m";
+      interval = "1m";
     };
   };
 
