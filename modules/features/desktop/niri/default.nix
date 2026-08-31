@@ -78,7 +78,7 @@
 
         
         binds = {
-          "Mod+Return".spawn-sh = lib.getExe pkgs.ghostty;
+          "Mod+Return".spawn-sh = lib.getExe self'.packages.myGhostty;
 
           "Mod+D".spawn-sh =
                 lib.getExe self'.packages.myFuzzel;

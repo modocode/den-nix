@@ -22,18 +22,15 @@
     programs.zsh = {
       enable = true;
       enableCompletion = true;
-      plugins = import ./plugins.nix {
-        inherit pkgs;
-      };        
-      syntaxHighlighting.highlighters = [
-          "main"
-          "brackets"
-          "pattern"
-          "regexp"
-          "root"
-          "line"
+      # syntaxHighlighting.highlighters = [
+      #     "main"
+      #     "brackets"
+      #     "pattern"
+      #     "regexp"
+      #     "root"
+      #     "line"
 
-      ];
+      # ];
 
       setOptions = ["HIST_IGNORE_DUPS"];
 
@@ -41,12 +38,18 @@
       
       autosuggestions = {
         enable = true;
-        highlightStyle = "fg=#6c7086,bg=none";
+        # highlightStyle = "fg=#6c7086,bg=none";
+        highlightStyle = "fg=#8fa832,bg=grey,bold,underline";
+
       };
 
       ohMyZsh = {
         enable = true;
-        theme = "agnoster";
+        theme = "fishy";
+        plugins = [
+          "zsh-interactive-cd"
+          "aliases"
+        ];
 
 
       };
@@ -66,7 +69,7 @@
               fd = "${lib.getExe pkgs.fd} -Lu";
               ns = "${lib.getExe self'.packages.nh} os switch . -H";
               nt = "${lib.getExe self'.packages.nh} os test . -H";
-              cd = "z";
+              cd = "cd";
               nc = "${lib.getExe self'.packages.nh} clean all";
 
             };
@@ -77,6 +80,7 @@
                 inherit pkgs;
                 runtimePkgs = [pkgs.fzf pkgs.zoxide];
                 zshAliases = myShellAliases;
+                zshrc.path = "~/.zshrc";
 
                 zshrc.content = ''
         eval "$(${lib.getExe pkgs.zoxide} init zsh)"
@@ -84,7 +88,6 @@
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         bindkey '^P' history-beginning-search-backward
         bindkey '^N' history-beginning-search-forward
-
         gen-cpp() {
             echo "use flake" > .envrc
             direnv allow

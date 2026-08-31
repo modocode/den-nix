@@ -9,7 +9,7 @@
     ...
   }:let
     modules = with self.nixosModules; [
-      zsh
+      # zsh
     ];
   in {
     imports = modules;

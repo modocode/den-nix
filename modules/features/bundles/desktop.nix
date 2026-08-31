@@ -12,6 +12,7 @@
         self.nixosModules.niri
         self.nixosModules.zen-browser
         self.nixosModules.fonts
+        self.nixosModules.ghostty
        # self.nixosModules.kde-plasma
     ];
     

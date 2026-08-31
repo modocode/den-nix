@@ -27,10 +27,10 @@
         */
     ];
 
-      home-manager.sharedModules = [
-
-
-      ];
+    home-manager.sharedModules = [
+      # self.homeModules.zsh
+      
+    ];
 
 
       

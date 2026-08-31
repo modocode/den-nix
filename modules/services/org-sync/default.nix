@@ -22,10 +22,13 @@
         #!${pkgs.bash}/bin/bash
         set -euo pipefail
 
+
         exec ${pkgs.rclone}/bin/rclone bisync \
           "${cfg.localPath}" \
           "${cfg.remote}" \
-          --filter-from "${orgFilter}"
+          --filter-from "${orgFilter}" \
+          --recover \
+          --resilient
       '';
 
     in
