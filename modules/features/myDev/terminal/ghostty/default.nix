@@ -6,10 +6,6 @@
 
     { ... }:
     {
-      programs.ghossty = {
-        enable = true;
-        package = self'.packages.myGhostty;
-      };
       
     }
   );
@@ -22,7 +18,7 @@
           inherit pkgs;
 
           settings = {
-            font-size = 14;
+            font-size = 12;
             theme = "Catppuccin Mocha";
             window-decoration = false;
             cursor-style = "bar";
