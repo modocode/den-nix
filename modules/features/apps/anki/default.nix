@@ -7,11 +7,14 @@
       environment.systemPackages = with pkgs; [
         anki
         anki-sync-server
-        ankiAddons = {
-          review-heatmap;
-          fsrs4anki-helper;
-          ajt-card-management;
-        };
+        (anki.withAddons [
+          ankiAddons.passfail2
+          ankiAddons.review-heatmap
+          ankiAddons.fsrs4anki-helper
+          ankiAddons.ajt-card-management
+        ])
+
+        
       ];
     };
 }
