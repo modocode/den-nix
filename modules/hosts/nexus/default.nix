@@ -7,7 +7,7 @@
     modules = with self.nixosModules; [
       # Define Modules For User
       nexusConfig
-      hostMain
+      hostMain # Hardware.nix file for host
 
 
       # dev; git, shell, terminals/editors, engr software
@@ -25,6 +25,7 @@
       dev
       office
       communication
+      study
 
       #services TODO: Eventually Factor into a services module
       orgSync

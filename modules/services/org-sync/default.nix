@@ -28,7 +28,8 @@
           "${cfg.remote}" \
           --filter-from "${orgFilter}" \
           --recover \
-          --resilient
+          --resilient \
+          --copy-links
       '';
 
     in
