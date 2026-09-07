@@ -29,7 +29,7 @@
 
     home-manager.sharedModules = [
       # self.homeModules.zsh
-      
+      self.homeModules.ghostty
     ];
 
 

@@ -22,8 +22,13 @@
       kdePackages.filelight
       kdePackages.kdenlive
       kdePackages.yakuake
-			ghostty
+      kdePackages.kaccounts-integration
+      kdePackages.kaccounts-providers
+      kdePackages.kio-gdrive
+      brightnessctl
+			# ghostty
     ];
+    
   };
 
     

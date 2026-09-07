@@ -89,7 +89,6 @@
             "fd --type f | ${lib.getExe self'.packages.myFuzzel} --dmenu | xargs -r xdg-open";
 
           
-            
     
 
           # Window management

@@ -16,7 +16,7 @@
 
     users.users.monad = {
       isNormalUser = true;
-			shell = self'.packages.myZsh;
+			shell = lib.getExe pkgs.zsh;
 			ignoreShellProgramCheck = true; 
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect

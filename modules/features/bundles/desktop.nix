@@ -7,9 +7,9 @@
     {
     imports = [
         self.nixosModules.core
-        #kde-plasma
+        self.nixosModules.kde-plasma
         self.nixosModules.network
-        self.nixosModules.niri
+        # self.nixosModules.niri
         self.nixosModules.zen-browser
         self.nixosModules.fonts
         self.nixosModules.ghostty
@@ -21,6 +21,7 @@
       environment.systemPackages = [
         #pkgs.kdePackages.spectacle
         pkgs.peazip
+        pkgs.nautilus
       ];
 
     });
