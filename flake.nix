@@ -28,7 +28,16 @@
             inputs.nixpkgs.follows = "nixpkgs";
           };
 
+          vicinae-extensions = {
+            url = "github:vicinaehq/extensions";
+            inputs.nixpkgs.follows = "nixpkgs";
+          };
 
+          vicinae =
+            {
+              url = "github:vicinaehq/vicinae";
+ 
+            };
 
         };
     
@@ -38,6 +47,8 @@
            # inputs.flake-parts.homeModules.modules
            inputs.flake-file.flakeModules.default
            inputs.home-manager.flakeModules.home-manager
+           # inputs.vicinae.nixosModules.default
+           # inputs.vicinae.homeManagerModules.default
            inputs.devshell.flakeModule   
            (inputs.import-tree ./modules) # keep this commented for now
            
