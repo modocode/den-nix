@@ -33,12 +33,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
           };
 
-          vicinae =
-            {
-              url = "github:vicinaehq/vicinae";
- 
-            };
+          vicinae = {
+            url = "github:vicinaehq/vicinae";
+          };
 
+          llm-agents.url = "github:numtide/llm-agents.nix";
         };
     
         outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {

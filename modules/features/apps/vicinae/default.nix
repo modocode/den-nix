@@ -1,11 +1,9 @@
-{
+{moduleWithSystem,inputs, ...}:{
   flake.homeModules.myVicinae = moduleWithSystem (
   { pkgs, ... }:
 
   {...}:
   {
-
-
       imports = [
         inputs.vicinae.homeManagerModules.default
       ];
@@ -29,13 +27,12 @@
         };
 
         extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-          bluetooth
+          # bluetooth
           nix
           power-profile
           # Extension names can be found in the link below, it's just the folder names
         ];
     };
 }
-
-
   );
+}
