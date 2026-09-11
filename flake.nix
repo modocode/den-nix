@@ -37,7 +37,10 @@
             url = "github:vicinaehq/vicinae";
           };
 
-          llm-agents.url = "github:numtide/llm-agents.nix";
+          agenix.url = "github:ryantm/agenix";
+          
+          # llm-agents.url = "github:numtide/llm-agents.nix";
+          # takes to long to update; constant compilation
         };
     
         outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {

@@ -1,0 +1,113 @@
+#+title: Den-nix
+#+description: my dendritic inspired nix config
+
+
+my [[https://github.com/mightyiam/dendritic][dendritic]] inspired [[https://nixos.org/][Nixos]] config
+
+
+* Structure
+
+  #+begin_src text
+  .
+├── flake.lock
+├── flake.nix
+├── .gitignore
+├── modules
+│   ├── features
+│   │   ├── apps
+│   │   │   ├── anki
+│   │   │   │   └── default.nix
+│   │   │   ├── emacs
+│   │   │   │   └── default.nix
+│   │   │   ├── fuzzel
+│   │   │   │   └── default.nix
+│   │   │   ├── ghostty
+│   │   │   │   └── default.nix
+│   │   │   ├── git
+│   │   │   │   └── default.nix
+│   │   │   ├── libreoffice
+│   │   │   │   └── default.nix
+│   │   │   ├── llm-agents
+│   │   │   │   └── default.nix
+│   │   │   ├── nh
+│   │   │   │   └── default.nix
+│   │   │   ├── vesktop.nix
+│   │   │   ├── vicinae
+│   │   │   │   └── default.nix
+│   │   │   ├── vscodium
+│   │   │   │   └── default.nix
+│   │   │   ├── wrapper-modules
+│   │   │   ├── zathura
+│   │   │   │   └── default.nix
+│   │   │   ├── zen
+│   │   │   │   └── default.nix
+│   │   │   └── zsh
+│   │   │       ├── default.nix
+│   │   │       └── starship.nix
+│   │   ├── bundles
+│   │   │   ├── code.nix
+│   │   │   ├── communication.nix
+│   │   │   ├── desktop.nix
+│   │   │   ├── dev
+│   │   │   │   ├── eda.nix
+│   │   │   │   ├── fpga.nix
+│   │   │   │   └── scientific.nix
+│   │   │   ├── dev.nix
+│   │   │   ├── documents.nix
+│   │   │   ├── office
+│   │   │   │   ├── pdfarranger
+│   │   │   │   │   └── default.nix
+│   │   │   │   └── thunderbird
+│   │   │   │       └── default.nix
+│   │   │   ├── office.nix
+│   │   │   ├── pdf.nix
+│   │   │   └── study.nix
+│   │   ├── desktop
+│   │   │   ├── kde
+│   │   │   │   └── default.nix
+│   │   │   ├── niri
+│   │   │   │   └── default.nix
+│   │   │   └── noctalia
+│   │   │       ├── default.nix
+│   │   │       └── noctalia.json
+│   │   ├── home
+│   │   │   ├── default.nix
+│   │   │   └── home-manager
+│   │   │       └── default.nix
+│   │   ├── myDev
+│   │   │   ├── engr
+│   │   │   ├── langs
+│   │   │   ├── terminal
+│   │   │   │   └── ghostty
+│   │   │   │       └── default.nix
+│   │   │   └── tools
+│   │   └── secrets
+│   │       └── default.nix
+│   ├── hosts
+│   │   └── nexus
+│   │       ├── default.nix
+│   │       ├── hardware-configuration.nix
+│   │       └── nexusCongig.nix
+│   ├── packages
+│   │   └── default.nix
+│   ├── services
+│   │   └── org-sync
+│   │       └── default.nix
+│   └── system
+│       ├── audio
+│       │   └── default.nix
+│       └── core
+│           ├── battery.nix
+│           ├── boot.nix
+│           ├── default.nix
+│           ├── fonts.nix
+│           ├── hardware.nix
+│           ├── locale.nix
+│           ├── network.nix
+│           ├── nix-settings.nix
+│           ├── printing.nix
+│           └── user.nix
+├── parts.nix
+└── secrets
+    └── secrets.nix
+  #+end_src

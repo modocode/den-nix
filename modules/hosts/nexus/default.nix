@@ -20,6 +20,7 @@
       
       
 
+      secrets
       # good
       desktop
       dev
