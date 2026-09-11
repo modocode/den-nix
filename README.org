@@ -111,3 +111,10 @@ my [[https://github.com/mightyiam/dendritic][dendritic]] inspired [[https://nixo
 └── secrets
     └── secrets.nix
   #+end_src
+
+
+- `features`: where all of my applications are defined
+- `host`: all host systems 
+- `packages`:  all custom nix derivations
+- 'services': custom systemd services
+- `system`: core system modules
