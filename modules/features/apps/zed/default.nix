@@ -17,20 +17,16 @@
           "zig"
         ];
  
-        userKeymaps = 
-          [
+        userKeymaps = [
             {
               context = "Workspace";
               bindings = {
                 ctrl-shift-t = "workspace::NewTerminal";
               };
-            };
+            }
           ];
-
-
       };
-
-    };
+    }
     
   );
 }
