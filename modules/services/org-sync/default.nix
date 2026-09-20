@@ -8,14 +8,18 @@
       cfg = config.services.org-sync;
 
       orgFilter = pkgs.writeText "org-filter.txt" ''
+
         # Emacs lock files
-        - **/.#*
+          - .#*
+          - **/.#*
 
-        # Emacs auto-save files
-        - **/#*#
+          # Emacs auto-save files
+          - #*#
+          - **/#*#
 
-        # Emacs backup files
-        - **/*~
+          # Emacs backup files
+          - *~
+          - **/*~
       '';
 
       orgSync = pkgs.writeShellScript "org-sync" ''

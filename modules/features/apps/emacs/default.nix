@@ -26,6 +26,7 @@
       package = pkgs.emacs-pgtk;
       emacsPackages = epkgs:  [
         epkgs.vterm
+        epkgs.envrc
       ];
 
   };

@@ -74,12 +74,23 @@
                  
                }
 
+               {
+                 name = "nt";
+                 command = "sudo nixos-rebuild test --flake .#nexus";
+               }
+               {
+                 name = "ns";
+                 command = "sudo nixos-rebuild switch --flake .#nexus";
+               }
+
              ];
 
              devshell.packages = with pkgs; [
                nixd                  # language server — go-to-def, completions, diagnostics
-
                
+               nixfmt-rfc-style      # official RFC 166 formatter (replaces nixpkgs-fmt)
+               statix                # lints anti-patterns: with pkgs, rec, etc.
+
                nixfmt-rfc-style      # official RFC 166 formatter (replaces nixpkgs-fmt)
                statix                # lints anti-patterns: with pkgs, rec, etc.
                deadnix               # finds unused let bindings and funurl = "github:BirdeeHub/nix-wrapction args
