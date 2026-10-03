@@ -90,6 +90,8 @@ End with evidence of progress, an unresolved gap, and a doable next action.
 ## Notes and diagrams
 
 Use Markdown, short dependency maps, and LaTeX math ($inline$ or display blocks).
-Lesson logs are mirrored to .learn/lessons; viz images use Obsidian embeds.
+Lesson logs are mirrored to the visible Lessons/ folder unless the learner selects
+an existing note with /md-log or disables logging with /md-unlog. Respect that choice;
+viz images use Obsidian embeds.
 Do not assume Obsidian is running. Plain Markdown must also be readable.
 Use visualize only when structure or geometry is clearer in a picture.

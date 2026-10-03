@@ -21,6 +21,7 @@
         #pkgs.kdePackages.spectacle
         pkgs.peazip
         pkgs.nautilus
+        pkgs.fastfetch
       ];
 
     });

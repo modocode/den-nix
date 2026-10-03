@@ -27,7 +27,12 @@ export default function learning(pi: ExtensionAPI) {
   async function linkLog(ctx: ExtensionContext) {
     const session = sessionId(ctx);
     if (logSession === session) return;
-    const dir = path.join(ctx.cwd, ".learn", "lessons");
+    // A restored/manual destination (including /md-unlog) takes precedence.
+    if (ctx.sessionManager.getEntries().some((entry: any) => entry.type === "custom" && entry.customType === "md-log")) {
+      logSession = session;
+      return;
+    }
+    const dir = path.join(ctx.cwd, "Lessons");
     await fs.mkdir(dir, { recursive: true });
     const filename = new Date().toISOString().slice(0, 10) + "-" + session + ".md";
     const file = path.join(dir, filename);

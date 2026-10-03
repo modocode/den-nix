@@ -28,10 +28,13 @@
       communication
       study
 
+      pi
+      steam
       myCode
       #services TODO: Eventually Factor into a services module
       orgSync
 
+      
 
     ];
 

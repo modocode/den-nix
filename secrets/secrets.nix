@@ -1,6 +1,6 @@
 # secrets/secrets.nix
 let
-  monad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMmjM5cWmwvRvKIIVfzBNiZj7vqNAivimsnpXq6u2pkZ";
+  monad = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMObm6G5QNf7AnZcxXHsQP1eEds4Wg7c0hS9nUQdCiXc";
   # nexus = "ssh-ed25519 AAAA...NEXUS-HOST-PUBLIC-KEY...";
   
   systems = [

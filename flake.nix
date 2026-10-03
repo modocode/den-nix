@@ -38,6 +38,13 @@
           };
 
           agenix.url = "github:ryantm/agenix";
+
+          pi = {
+            url = "github:lukasl-dev/pi.nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+
+          };
+            
           
           # llm-agents.url = "github:numtide/llm-agents.nix";
           # takes to long to update; constant compilation

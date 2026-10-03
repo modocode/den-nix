@@ -59,13 +59,23 @@ no background scheduler or notification service.
 
 - `.learn/state.json` — authoritative structured record; includes learner responses.
 - `.learn/PROGRESS.md` — readable summary generated from the record.
-- `.learn/lessons/<date>-<session>.md` — mirrored conversation and quiz feedback.
+- `Lessons/<date>-<session>.md` — mirrored conversation and quiz feedback, visible in Obsidian.
 - `viz/` — published diagrams, compatible with Obsidian embeds.
 
 Keep a separate project folder per subject; continuing a subject reuses its state.
 A changed goal keeps prior evidence. Records are never stored in the Nix store.
 Do not commit personal learning records unless you want to share their contents.
 Obsidian is optional. Lessons use Markdown and LaTeX; diagrams use Obsidian embeds.
+Open the project folder as your Obsidian vault. Automatic logs go in `Lessons/`;
+`.learn/` holds internal progress data and is normally hidden by Obsidian.
+To read the current session in an existing note, run
+`/md-log Learning Numpy For Machine Learning.md` (spaces are supported, quotes optional).
+This appends a backfill and then mirrors new messages. The chosen note survives
+session resume and `/learn`; `/md-unlog` also survives resume. Linking the same
+active file again does not duplicate the transcript. A fresh session starts its own
+automatic lesson log. Older `.learn/lessons/` files are retained; copy them to
+`Lessons/` if you want to browse them in Obsidian, or relink the current session to
+your note to backfill it. Obsidian displays the transcript; replies still go through Pi.
 
 Writes serialize across processes with `.learn/.state.lock` and use atomic file
 replacement. A malformed state raises an error and is preserved. Back up state.json

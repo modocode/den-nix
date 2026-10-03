@@ -13,8 +13,6 @@
         package = self'.packages.nh;
         enable = true;
         flake = "/home/monad/den-nix";
-        clean.enable = true;
-        clean.extraArgs = "--keep-since 4d --keep 3";
       };
 
     });

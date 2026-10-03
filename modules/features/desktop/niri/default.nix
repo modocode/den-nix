@@ -40,6 +40,25 @@
         #   "vicinae server"
         # ];
 
+        layer-rules = [
+          {
+
+            matches = [
+              {
+                namespace = "^noctalia-(bar-[^\"]+|notification|panel|attached-panel|osd)$";
+
+              }
+
+            ];
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
+
+          }
+
+        ];
+        
         window-rules = [
           {
             geometry-corner-radius = 12;
@@ -143,7 +162,7 @@
   #         ${lib.getExe' pkgs.xdg-utils "xdg-open"} \
   #           "https://www.google.com/search?q=$(
   #             printf "" |
-  #             ${lib.getExe self'.packages.myFuzzel} --dmenu --prompt="Search: " |
+  #             ${lib.getExe self'.packages.myFuzzel} --dmenu --prompt="Sear " |
   #               ${lib.getExe pkgs.jq} -sRr @uri
   #                                  )"
   #         '';
@@ -198,6 +217,16 @@
 
   "Mod+Alt+Comma".consume-window-into-column = { };
   "Mod+Alt+Period".expel-window-from-column = { };
+
+  "Mod+Alt+L".consume-or-expel-window-right = { };
+  "Mod+Alt+H".consume-or-expel-window-left = { };
+  "Mod+T".toggle-column-tabbed-display = { };
+
+
+
+  "Mod+Alt+Q".switch-preset-column-width = { };
+  "Mod+Alt+A".switch-preset-window-height = { };
+  "Mod+Alt+S".expand-column-to-available-width = { };
 
   # move column 
   "Mod+Shift+H".move-column-left = { };

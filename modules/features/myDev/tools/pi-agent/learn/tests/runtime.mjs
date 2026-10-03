@@ -77,11 +77,36 @@ try {
     rubric: "Relate prior, likelihood, and posterior odds.", rationale: "The actual learner stated the odds relation correctly." }, undefined, undefined, ctx);
   await commands.get("progress").handler("", ctx);
   assert.ok(messages.some((m) => typeof m === "object" && m.customType === "learning-progress"));
-  assert.equal((await fs.readdir(path.join(project, ".learn/lessons"))).length, 1);
+  assert.equal((await fs.readdir(path.join(project, "Lessons"))).length, 1);
   assert.ok(!notifications.some((n) => n.level === "error"), JSON.stringify(notifications));
   await emit("session_start");
   const resumed = JSON.parse((await progress.execute("read", { action: "read" }, undefined, undefined, ctx)).content[0].text);
   assert.equal(resumed.attempts.length, 1);
+  // An Obsidian note chosen by the learner must survive automatic relinking.
+  const note = path.join(project, "Learning Numpy For Machine Learning.md");
+  await fs.writeFile(note, "# My existing note\n");
+  await commands.get("md-log").handler('"Learning Numpy For Machine Learning.md"', ctx);
+  const transcript = await fs.readFile(note, "utf8");
+  assert.ok(transcript.includes("Posterior odds"), "manual note receives backfill");
+  await commands.get("md-log").handler("Learning Numpy For Machine Learning.md", ctx);
+  assert.equal(await fs.readFile(note, "utf8"), transcript, "relinking is idempotent");
+  await emit("session_start");
+  await tools.get("learning_start").execute("resume", { goal: "Use NumPy for machine learning" }, undefined, undefined, ctx);
+  assert.equal(branch.filter((e) => e.customType === "md-log").at(-1).data.file, note);
+  assert.equal(await fs.readFile(note, "utf8"), transcript, "resume does not duplicate backfill");
+  await emit("message_end", { message: { role: "assistant", content: [{ type: "text", text: "A matrix has rows and columns." }] } });
+  assert.ok((await fs.readFile(note, "utf8")).includes("A matrix has rows and columns."), "resumed messages reach the selected note");
+  await commands.get("md-unlog").handler("", ctx);
+  await emit("session_start");
+  await tools.get("learning_start").execute("resume-unlogged", { goal: "Use NumPy for machine learning" }, undefined, undefined, ctx);
+  assert.equal(branch.filter((e) => e.customType === "md-log").at(-1).data.file, null, "unlog survives resume");
+  const stopped = await fs.readFile(note, "utf8");
+  await emit("message_end", { message: { role: "assistant", content: [{ type: "text", text: "This should stay in the terminal." }] } });
+  assert.equal(await fs.readFile(note, "utf8"), stopped, "resumed unlog prevents writes");
+  branch.length = 0;
+  await emit("session_start");
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.ok(branch.filter((e) => e.customType === "md-log").at(-1).data.file.includes("/Lessons/"), "new sessions reset the manual destination");
   console.log("Locked Pi loader: seven extensions, five commands, specialist discovery, canceled UI, evidence capture, assessment, logging, and resume passed.");
 } finally {
   if (loaded) for (const e of loaded.extensions) for (const handler of e.handlers.get("session_shutdown") ?? []) await handler({ type: "session_shutdown" }, ctx);

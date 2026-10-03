@@ -37,6 +37,8 @@ export default function mdLog(pi: ExtensionAPI) {
 	// --- State restoration on session restart ---
 
 	pi.on("session_start", async (_event, ctx) => {
+		logFile = null;
+		ctx.ui.setStatus("md-log", undefined);
 		let lastLinkData: { file: string | null } | undefined;
 		for (const entry of ctx.sessionManager.getEntries()) {
 			if (entry.type === "custom" && entry.customType === "md-log") {
@@ -279,7 +281,10 @@ export default function mdLog(pi: ExtensionAPI) {
 	// --- Commands ---
 
 	const linkLog = async (args: string, ctx: any) => {
-			const filepath = args.trim();
+			let filepath = args.trim();
+			if ((filepath.startsWith('"') && filepath.endsWith('"')) || (filepath.startsWith("'") && filepath.endsWith("'"))) {
+				filepath = filepath.slice(1, -1);
+			}
 			if (!filepath) {
 				ctx.ui.notify("Usage: /md-log <filepath>", "warning");
 				return;
@@ -300,6 +305,10 @@ export default function mdLog(pi: ExtensionAPI) {
 			}
 			if (!fs.statSync(resolved).isFile()) {
 				ctx.ui.notify(`Not a file: ${resolved}`, "error");
+				return;
+			}
+			if (logFile === resolved) {
+				ctx.ui.notify(`Already linked: ${resolved}`, "info");
 				return;
 			}
 
