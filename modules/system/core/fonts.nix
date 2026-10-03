@@ -17,7 +17,7 @@
           inconsolata
           fira-code
 			    ibm-plex
-
+          iosevka-comfy.comfy
 			    
 		    ];
 

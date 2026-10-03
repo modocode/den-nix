@@ -33,7 +33,6 @@
           --filter-from "${orgFilter}" \
           --recover \
           --resilient \
-          --copy-links
       '';
 
     in

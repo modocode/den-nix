@@ -19,7 +19,7 @@
       };
 
       security.sudo.enable = true;
-
+      services.openssh.enable = true;
       # networking.wg-quick.interfaces = {
       #     surfshark = {
       #       # Use the 'Address' from your downloaded Surfshark .conf

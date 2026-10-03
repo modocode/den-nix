@@ -1,0 +1,7 @@
+{
+  "name": "@learn/visual-tools",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Nix-packaged visual tools. Mermaid CLI and Chromium are supplied by the launcher, not npm."
+}
