@@ -14,7 +14,7 @@
       tor
     ];
 
-
+    programs.fuse.userAllowOther = true;
     services.org-sync = {
       enable = true;
       localPath = "/home/monad/org";
