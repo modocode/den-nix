@@ -28,7 +28,7 @@
       communication
       study
 
-      pi
+      # pi
       steam
       myCode
       #services TODO: Eventually Factor into a services module

@@ -9,7 +9,6 @@
           systems.url = "github:nix-systems/default";
           devshell.url = "github:numtide/devshell";
 
-          flake-file.url = "github:vic/flake-file";
           
           home-manager = {
             url = "github:nix-community/home-manager";
@@ -44,6 +43,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
 
           };
+
+          apple-fonts.url= "github:Lyndeno/apple-fonts.nix";
             
           
           # llm-agents.url = "github:numtide/llm-agents.nix";
@@ -54,7 +55,6 @@
          imports = [
            inputs.flake-parts.flakeModules.modules
            # inputs.flake-parts.homeModules.modules
-           inputs.flake-file.flakeModules.default
            inputs.home-manager.flakeModules.home-manager
            # inputs.vicinae.nixosModules.default
            # inputs.vicinae.homeManagerModules.default
@@ -95,10 +95,7 @@
              devshell.packages = with pkgs; [
                nixd                  # language server — go-to-def, completions, diagnostics
                
-               nixfmt-rfc-style      # official RFC 166 formatter (replaces nixpkgs-fmt)
-               statix                # lints anti-patterns: with pkgs, rec, etc.
-
-               nixfmt-rfc-style      # official RFC 166 formatter (replaces nixpkgs-fmt)
+               nixfmt      # official RFC 166 formatter (replaces nixpkgs-fmt)
                statix                # lints anti-patterns: with pkgs, rec, etc.
                deadnix               # finds unused let bindings and funurl = "github:BirdeeHub/nix-wrapction args
                

@@ -2,7 +2,7 @@
 
 {
 
-  flake.nixosModules.office = moduleWithSystem({pkgs, ...}:
+  flake.nixosModules.office = {pkgs, ...}:
     {
       imports = [
         self.nixosModules.office-pdf
@@ -21,8 +21,9 @@
         pdf4qt
       ];
 
+      
 
-    });
+    };
 
 
 

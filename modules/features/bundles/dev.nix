@@ -13,6 +13,7 @@
         self.nixosModules.scientific
         self.nixosModules.eda
         self.nixosModules.fpga
+        self.nixosModules.sdr
 
         /*
           to add as needed

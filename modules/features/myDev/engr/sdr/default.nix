@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.tmux = {pkgs, ...}:
+  flake.nixosModules.sdr = {pkgs, ...}:
     {
 
       hardware.rtl-sdr.enable = true;
@@ -20,6 +20,9 @@
 
         # Hardware diagnostics
         usbutils
+
+        # Aircraft ADS-B decoding
+        dump1090-fa
 
       ];
 
