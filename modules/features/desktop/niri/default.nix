@@ -61,7 +61,7 @@
         
         window-rules = [
           {
-            geometry-corner-radius = 12;
+            geometry-corner-radius = 1;
             clip-to-geometry = true;
             draw-border-with-background = true;
           }
@@ -283,7 +283,7 @@
   });
 
   ## Editing screenshot
-  "Mod+Shift+E".spawn-sh = ''${lib.getExe pkgs.wl-clipboard}/bin/wl-paste | ${lib.getExe pkgs.swappy} -f -'';
+  "Mod+Shift+E".spawn-sh = ''${lib.getExe' pkgs.wl-clipboard "wl-paste"} | ${lib.getExe pkgs.swappy} -f -'';
 
 
           
@@ -293,11 +293,10 @@
           gaps = 10;
           focus-ring = {
             width = 3;
-            active-color = "#f5c2e7";
+            active-color = "#D3D3D3";
             inactive-color = "#313244";
-            
-
           };
+          always-center-single-column = { };
         };
 
        

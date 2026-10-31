@@ -2,7 +2,7 @@
 
 {
 
-  flake.nixosModules.desktop = moduleWithSystem({pkgs, ...}:
+  flake.nixosModules.desktop = {pkgs, ...}:
 
     {
     imports = [
@@ -22,9 +22,13 @@
         pkgs.peazip
         pkgs.nautilus
         pkgs.fastfetch
+        # pkgs.firefox-bin
+        # pkgs.firefox-bin-unwrapped
+        # pkgs.google-chrome
+        pkgs.brave
       ];
 
-    });
+    };
 
 
 }

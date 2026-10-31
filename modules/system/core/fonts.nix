@@ -1,5 +1,5 @@
 
-{...}:
+{inputs, ...}:
 
 
 {
@@ -7,6 +7,10 @@
 
     {
 
+      nixpkgs.overlays = [
+        inputs.apple-fonts.overlays.default
+      ];
+      
 	    fonts = {
 		    enableDefaultPackages = true; 
 		    packages = with pkgs; [
@@ -18,6 +22,7 @@
           fira-code
 			    ibm-plex
           iosevka-comfy.comfy
+          sf-mono-nerd
 			    
 		    ];
 

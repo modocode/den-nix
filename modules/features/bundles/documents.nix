@@ -5,12 +5,13 @@
     { pkgs, ... }:
     {
       imports = [
-        self.nixosModules.libreoffice
+        # self.nixosModules.libreoffice
         
       ];
 
       environment.systemPackages = [
         pkgs.pandoc
+        pkgs.onlyoffice-desktopeditors
       ];
     };
 }
