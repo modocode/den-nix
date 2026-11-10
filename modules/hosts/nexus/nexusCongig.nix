@@ -1,5 +1,4 @@
 {...}:
-
 {
   flake.nixosModules.nexusConfig = {pkgs,...}: {
 
@@ -21,6 +20,9 @@
       remote = "myDropBox3.1:org";
       interval = "1m";
     };
+
+
+    my.services.logitechs.enable = true;
   };
 
 

@@ -1,4 +1,4 @@
-{self, moduleWithSystem, ...}:
+{self, moduleWithSystem, inputs, ...}:
 
 {
 
@@ -19,6 +19,7 @@
         
       environment.systemPackages = [
         #pkgs.kdePackages.spectacle
+        # inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
         pkgs.peazip
         pkgs.nautilus
         pkgs.fastfetch

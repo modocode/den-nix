@@ -19,21 +19,20 @@
 
       };
       home-manager.sharedModules = [
-        self.homeModules.myVicinae
+        self.homeModules.walker
       ];
-      
+
 
     });
 
   perSystem = {pkgs,inputs', lib, self', ...}:{
-    packages.myVicinae = inputs'.vicinae.packages.default;
     packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       
       settings = {
         spawn-at-startup = [
           (lib.getExe self'.packages.myNoctalia)
-          ["${lib.getExe self'.packages.myVicinae}" "server"]
+          # ["${lib.getExe self'.packages.myVicinae}" "server"]
         ];
 
         # spawn-sh-at-startup = [
@@ -63,7 +62,7 @@
           {
             geometry-corner-radius = 1;
             clip-to-geometry = true;
-            draw-border-with-background = true;
+            draw-border-with-background = false;
           }
 
           
@@ -110,50 +109,51 @@
           "Mod+Return".spawn-sh = lib.getExe self'.packages.myGhostty;
           "Mod+E".spawn-sh = "${lib.getExe self'.packages.emacs}client -c ";
 
-          # "Mod+D".spawn-sh =
-          #       lib.getExe self'.packages.myFuzzel;
-
-
-
-          "Mod+Shift+D".spawn-sh =
-            "${lib.getExe self'.packages.myVicinae} toggle";
           "Mod+D".spawn-sh =
-            "${lib.getExe self'.packages.myVicinae} open";
+                lib.getExe self'.packages.myFuzzel;
 
-          "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+
+
+          # "Mod+Shift+D".spawn-sh =
+            # "${lib.getExe self'.packages.myVicinae} toggle";
+          # "Mod+D".spawn-sh =
+          #   # "${lib.getExe self'.packages.myVicinae} open";
+          #   "walker";
+
+          # "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle"; # 
 
 
           # file picker
-  #         "Mod+Shift+D".spawn-sh = ''
-  #         {
-  #           ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Documents"
-  #           ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Downloads"
-  #           ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/org"
-  #           ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Pictures"
-  #           ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Videos"
-  #           ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Projects"
-  #         } 2>/dev/null |
-  #         ${lib.getExe self'.packages.myFuzzel} --dmenu |
-  #         while IFS= read -r file; do
-  #           [ -n "$file" ] && ${lib.getExe' pkgs.xdg-utils "xdg-open"} "$file"
-  #         done
-  #       '';
+          "Mod+Shift+D".spawn-sh = ''
+          {
+            ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Documents"
+            ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Downloads"
+            ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/org"
+            ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Pictures"
+            ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Videos"
+            ${lib.getExe pkgs.fd} --type f --hidden . "$HOME/Projects"
+          } 2>/dev/null |
+          ${lib.getExe self'.packages.myFuzzel} --dmenu |
+          while IFS= read -r file; do
+            [ -n "$file" ] && ${lib.getExe' pkgs.xdg-utils "xdg-open"} "$file"
+          done
+        '';
 
 
-  #       # clipboard
-  #       "Mod+V".spawn-sh = ''
-  #           ${lib.getExe pkgs.cliphist} list |
-  #           ${lib.getExe self'.packages.myFuzzel} --dmenu |
-  #           ${lib.getExe pkgs.cliphist} decode |
-  #           ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
+        # clipboard
+        "Mod+V".spawn-sh = ''
+            ${lib.getExe pkgs.cliphist} list |
+            ${lib.getExe self'.packages.myFuzzel} --dmenu |
+            ${lib.getExe pkgs.cliphist} decode |
+            ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
   #         '';
 
           
-  #         "Mod+Shift+V".spawn-sh = ''
-  #             ${lib.getExe pkgs.cliphist} list |
-  #             ${lib.getExe self'.packages.myFuzzel} --dmenu |
-  #             ${lib.getExe pkgs.cliphist} delete
-  #         '';
+          "Mod+Shift+V".spawn-sh = ''
+              ${lib.getExe pkgs.cliphist} list |
+              ${lib.getExe self'.packages.myFuzzel} --dmenu |
+              ${lib.getExe pkgs.cliphist} delete
+          '';
 
 
 
@@ -167,42 +167,42 @@
   #                                  )"
   #         '';
 
-  #         # Power menu
-  #         "Mod+Shift+Escape".spawn-sh = ''
-  #   choice="$(
-  #     printf "Lock\nSuspend\nReboot\nShutdown\nLogout\n" |
-  #     ${lib.getExe self'.packages.myFuzzel} --dmenu
-  #                                            )"
+          # Power menu
+          "Mod+Shift+Escape".spawn-sh = ''
+    choice="$(
+      printf "Lock\nSuspend\nReboot\nShutdown\nLogout\n" |
+      ${lib.getExe self'.packages.myFuzzel} --dmenu
+                                             )"
 
-  #   case "$choice" in
-  #     Lock)
-  #       ${lib.getExe pkgs.swaylock}
-  #       ;;
-  #     Suspend)
-  #       systemctl suspend
-  #       ;;
-  #     Reboot)
-  #       systemctl reboot
-  #       ;;
-  #     Shutdown)
-  #       systemctl poweroff
-  #       ;;
-  #     Logout)
-  #       niri msg action quit
-  #       ;;
-  #   esac
-  # '';
+    case "$choice" in
+      Lock)
+        ${lib.getExe pkgs.swaylock}
+        ;;
+      Suspend)
+        systemctl suspend
+        ;;
+      Reboot)
+        systemctl reboot
+        ;;
+      Shutdown)
+        systemctl poweroff
+        ;;
+      Logout)
+        niri msg action quit
+        ;;
+    esac
+  '';
 
 
-  # # Process killer
-  # "Mod+Ctrl+P".spawn-sh = ''
-  #   pid="$(
-  #     ${lib.getExe pkgs.procps} -eo pid,comm,%cpu,%mem --sort=-%cpu |
-  #     ${lib.getExe self'.packages.myFuzzel} --dmenu |
-  #     ${lib.getExe pkgs.gawk} '{print $1}'
-  #   )"
-  #   [ -n "$pid" ] && kill "$pid"
-  # '';
+  # Process killer
+  "Mod+Ctrl+P".spawn-sh = ''
+    pid="$(
+      ${lib.getExe pkgs.procps} -eo pid,comm,%cpu,%mem --sort=-%cpu |
+      ${lib.getExe self'.packages.myFuzzel} --dmenu |
+      ${lib.getExe pkgs.gawk} '{print $1}'
+    )"
+    [ -n "$pid" ] && kill "$pid"
+  '';
 
           
   # Window management

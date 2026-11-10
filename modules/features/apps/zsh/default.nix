@@ -120,6 +120,8 @@
 
                 zshrc.content = ''
         eval "$(${lib.getExe pkgs.zoxide} init zsh)"
+        eval "$(${lib.getExe pkgs.devenv} hook zsh)"
+
 
         #source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         bindkey '^P' history-beginning-search-backward

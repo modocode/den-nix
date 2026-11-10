@@ -1,7 +1,7 @@
 { self, ... }:
 
 {
-  flake.nixosModules.myCode = {
+  flake.nixosModules.myCode = {pkgs,...}: {
     imports = [
       # self.nixosModules.llm-agents
       self.nixosModules.tmux
@@ -14,6 +14,11 @@
         enable = true;
       };
     };
+    environment.systemPackages = with pkgs; [
+      devenv
+
+    ];
+
 
     
     

@@ -111,7 +111,7 @@ _sesh()
             # The description is preceded by a TAB character.
             # For zsh's _describe, we need to use a : instead of a TAB.
             # We first need to escape any : as part of the completion itself.
-            comp=${comp//:/\\:}
+             comp=${comp//:/\\:}
 
             local tab="$(printf '\t')"
             comp=${comp//$tab/:}

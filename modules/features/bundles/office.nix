@@ -17,10 +17,10 @@
 
       environment.systemPackages = with pkgs; [
         # simple office utilities
+        
         zotero
         pdf4qt
       ];
-
       
 
     };

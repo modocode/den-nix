@@ -7,7 +7,10 @@
           flake-parts.url = "github:hercules-ci/flake-parts";
           
           systems.url = "github:nix-systems/default";
-          devshell.url = "github:numtide/devshell";
+          devshell = {
+            url = "github:numtide/devshell";
+            inputs.nixpkgs.follows = "nixpkgs";
+          };
 
           
           home-manager = {
@@ -15,7 +18,10 @@
             inputs.nixpkgs.follows = "nixpkgs";
           };
 
-          wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+          wrapper-modules = {
+            url = "github:BirdeeHub/nix-wrapper-modules";
+            inputs.nixpkgs.follows = "nixpkgs";
+          };
 
           zen-browser = {
             url = "github:youwen5/zen-browser-flake";
@@ -27,24 +33,45 @@
             inputs.nixpkgs.follows = "nixpkgs";
           };
 
-          vicinae-extensions = {
-            url = "github:vicinaehq/extensions";
+          # vicinae-extensions = {
+          #   url = "github:vicinaehq/extensions";
+          #   inputs.nixpkgs.follows = "nixpkgs";
+          # };
+
+          # vicinae = {
+          #   url = "github:vicinaehq/vicinae";
+          #   inputs.nixpkgs.follows = "nixpkgs";
+          #   inputs.soulver-cpp.inputs.nixpkgs-libxml2.follows = "nixpkgs";
+          # };
+
+          elephant.url = "github:abenz1267/elephant";
+
+          walker = {
+            url = "github:abenz1267/walker";
+            inputs.elephant.follows = "elephant";
+          };
+
+          helium = {
+            url = "github:AlvaroParker/helium-nix";
             inputs.nixpkgs.follows = "nixpkgs";
           };
 
-          vicinae = {
-            url = "github:vicinaehq/vicinae";
-          };
-
-          agenix.url = "github:ryantm/agenix";
-
-          pi = {
-            url = "github:lukasl-dev/pi.nix";
+          agenix = {
+            url = "github:ryantm/agenix";
             inputs.nixpkgs.follows = "nixpkgs";
-
           };
 
-          apple-fonts.url= "github:Lyndeno/apple-fonts.nix";
+          # pi = {
+          #   url = "github:lukasl-dev/pi.nix";
+          #   inputs.nixpkgs-x86_64-darwin.follows = "nixpkgs";
+          #   inputs.nixpkgs.follows = "nixpkgs";
+
+          # };
+
+          apple-fonts = {
+            url = "github:Lyndeno/apple-fonts.nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+          };
             
           
           # llm-agents.url = "github:numtide/llm-agents.nix";
